@@ -17,15 +17,15 @@ public class ManagerRole {
         database.readFromFile();
     }
 
-    public void addStudent(String studentID, String fullName, int age, String gender, float GPA) {
-        Student student = new Student(studentID, fullName, age, gender, GPA);
+    public void addStudent(int studentID, String fullName, int age, String gender,String department, double GPA) {
+        Student student = new Student(studentID, fullName, age, gender,department ,GPA);
         System.out.println("Adding Student to the database...");
         database.insertRecord(student);
         database.saveToFile();
         
     }
     
-    public void deleteStudent(String key){
+    public void deleteStudent(int key){
         System.out.println("Removing Student from the database...");
         database.deleteRecord(key);
         database.saveToFile();
@@ -43,16 +43,24 @@ public class ManagerRole {
         System.out.println("Logging out. Saving...");
         database.saveToFile();
     }
-    public void updateStudent(){
-        // Implementation for updating a student record probably after GUI
+    public void updateStudent(int studentID, String fullName, int age, String gender,String department, double GPA){
+        System.out.println("Updating Student data..."); 
+        database.updateStudent(studentID, fullName, age, gender, department, GPA);
+         database.saveToFile();            
     }
-    public Student searchStudent(String key){
-        System.out.println("Searching for Student...");
-        Student student = database.getRecord(key);
-        if(student == null){
-            System.out.println("Student not found!");
-        }
-        return student;
+    public Student searchStudentByID(int key){
+        System.out.println("Searching for Student by ID...");
+        return database.searchStudent(key);
+    }
+    public Student searchStudentByName(String name){
+        System.out.println("Searching for Student by name...");
+        return database.searchStudentByName(name);
+    }
+
+    public void sortByGPA(){
+        System.out.println("Sorting Students by GPA...");
+        database.sortByGPA();
+        database.saveToFile();
     }
 }
 
