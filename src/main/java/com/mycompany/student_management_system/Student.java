@@ -46,7 +46,7 @@ public class Student implements Info {
 
     public void setId(int id) {
         if (id < 0) {
-            System.out.println("Student ID must be non-negative.");
+            System.out.println("Student ID must be Positive.");
             return;
         }
         this.id = id;
@@ -54,7 +54,7 @@ public class Student implements Info {
 
     public void setFullName(String fullName) {
         if (fullName == null || fullName.trim().isEmpty()) {
-            System.out.println("Full name cannot be empty.");
+            System.out.println("name cannot be empty.");
             return;
         }
         this.fullName = fullName.trim();
@@ -75,7 +75,7 @@ public class Student implements Info {
         }
         gender = gender.trim().toLowerCase();
         if (!gender.equals("male") && !gender.equals("female")) {
-            System.out.println("Gender must be either 'Male' or 'Female'.");
+            System.out.println("Gender must be either Male or Female.");
             return;
         }
         this.gender = Character.toUpperCase(gender.charAt(0)) + gender.substring(1);
