@@ -32,8 +32,8 @@ public class LoginScreen extends javax.swing.JDialog {
         usernameLabel = new javax.swing.JLabel();
         passwordLabel = new javax.swing.JLabel();
         usernameField = new javax.swing.JTextField();
-        passwordField = new javax.swing.JTextField();
         submitButton = new javax.swing.JButton();
+        passwordField = new javax.swing.JPasswordField();
 
         jLabel3.setText("Username:");
 
@@ -51,12 +51,6 @@ public class LoginScreen extends javax.swing.JDialog {
             }
         });
 
-        passwordField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordFieldActionPerformed(evt);
-            }
-        });
-
         submitButton.setLabel("Submit");
         submitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,10 +58,22 @@ public class LoginScreen extends javax.swing.JDialog {
             }
         });
 
+        passwordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordFieldActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(164, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(submitButton)
+                    .addComponent(loginLabel))
+                .addGap(164, 164, 164))
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -76,12 +82,6 @@ public class LoginScreen extends javax.swing.JDialog {
                     .addComponent(usernameField, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
                     .addComponent(passwordField))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(164, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(submitButton)
-                    .addComponent(loginLabel))
-                .addGap(164, 164, 164))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,21 +111,21 @@ public class LoginScreen extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_usernameFieldActionPerformed
 
+    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
+                String username = usernameField.getText();
+                String password  = passwordField.getText();
+                ManagerRole manager = new ManagerRole();
+                if(password != manager.getPassword() || username != manager.getUsername()){
+                JOptionPane.showMessageDialog(this, "Invalid Credentials!");
+                }
+                else {
+                    //todo
+                }
+    }//GEN-LAST:event_submitButtonActionPerformed
+
     private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_passwordFieldActionPerformed
-
-    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
-                String userName = usernameField.getText();
-                int id = Integer.valueOf(passwordField.getText());
-                ManagerRole manager = new ManagerRole();
-                if(manager.searchStudentByName(userName) == null){
-                JOptionPane.showMessageDialog(this, "Invalid Username!");
-                }
-                else if(manager.searchStudentByID(id) == null){
-                JOptionPane.showMessageDialog(this, "Invalid password!");
-                }
-    }//GEN-LAST:event_submitButtonActionPerformed
 
     
     /**
@@ -173,7 +173,7 @@ public class LoginScreen extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel loginLabel;
-    private javax.swing.JTextField passwordField;
+    private javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JButton submitButton;
     private javax.swing.JTextField usernameField;
