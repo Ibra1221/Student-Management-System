@@ -4,6 +4,8 @@
  */
 package frontend;
 import backend.ManagerRole;
+import java.util.Arrays;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 /**
  *
@@ -17,6 +19,7 @@ public class LoginScreen extends javax.swing.JDialog {
     public LoginScreen(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -113,13 +116,17 @@ public class LoginScreen extends javax.swing.JDialog {
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
                 String username = usernameField.getText();
-                String password  = passwordField.getText();
+                String password  = new String(passwordField.getPassword());
+                System.out.println(password);
                 ManagerRole manager = new ManagerRole();
-                if(password != manager.getPassword() || username != manager.getUsername()){
+                if(manager.getIndex(manager.getPasswords(), password) == -1 || manager.getIndex(manager.getUsernames(), username) == -1 ){
                 JOptionPane.showMessageDialog(this, "Invalid Credentials!");
                 }
+                else if(manager.getIndex(manager.getPasswords(), password) != manager.getIndex(manager.getUsernames(), username)){
+                JOptionPane.showMessageDialog(this, "Username and password don't match!");
+                }
                 else {
-                    //todo
+                    JOptionPane.showMessageDialog(this, "Welcome, " + username +"!");
                 }
     }//GEN-LAST:event_submitButtonActionPerformed
 

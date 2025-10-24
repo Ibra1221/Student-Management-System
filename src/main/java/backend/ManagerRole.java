@@ -11,12 +11,23 @@ package backend;
 import java.util.ArrayList;
 public class ManagerRole {
  private StudentDatabase database;
-
+ final private String[] admins  = {"Ibrahim", "Walaa", "Pola", "Youssef"}; 
+ final private String[] passwords  = {"123", "456", "789", "101112"}; 
+ 
     public ManagerRole() {
         database = new StudentDatabase("Students.txt"); 
         database.readFromFile();
     }
 
+    public int getIndex(String[] arr, String word){
+        for(int i =0; i< arr.length; i++){
+            if(arr[i].equals(word)){
+                return i;
+            }
+        }
+        return -1;
+    }
+    
     public void addStudent(int studentID, String fullName, int age, String gender,String department, double GPA) {
         Student student = new Student(studentID, fullName, age, gender,department ,GPA);
         System.out.println("Adding Student to the database...");
@@ -45,11 +56,11 @@ public class ManagerRole {
         System.out.println("Updating Student data..."); 
         database.updateStudent(studentID, fullName, age, gender, department, GPA);            
     }
-    public Student searchStudentByID(int key){
+    public Student searchStudent(int id){
         System.out.println("Searching for Student by ID...");
-        return database.searchStudent(key);
+        return database.searchStudent(id);
     }
-    public Student searchStudentByName(String name){
+    public Student searchStudent(String name){
         System.out.println("Searching for Student by name...");
         return database.searchStudent(name);
     }
@@ -67,6 +78,14 @@ public class ManagerRole {
     public void sortByID(){
         System.out.println("Sorting Students by GPA...");
         database.sortByID();
+    }
+    
+    public String[] getPasswords(){
+        return this.passwords;
+    }
+    
+    public String[] getUsernames(){
+        return this.admins;
     }
 }
 
