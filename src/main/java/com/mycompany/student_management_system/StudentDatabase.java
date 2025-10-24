@@ -76,6 +76,7 @@ public class StudentDatabase extends Database<Student> {
                 }
             }
         }
+        saveToFile();
         System.out.println("Students sorted by ID successfully.");
     }
 
@@ -92,6 +93,7 @@ public class StudentDatabase extends Database<Student> {
                 }
             }
         }
+        saveToFile();
         System.out.println("Students sorted by name successfully.");
     }
 
@@ -148,6 +150,7 @@ public class StudentDatabase extends Database<Student> {
                 }
             }
         }
+        saveToFile();
         System.out.println("Students sorted by GPA successfully.");
     }
 }
