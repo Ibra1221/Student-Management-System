@@ -95,7 +95,7 @@ public class StudentDatabase extends Database<Student> {
         System.out.println("Students sorted by name successfully.");
     }
 
-    public boolean updateStudent(int studentId, String newName, int newAge, String newGender, String newDepartment, double newGPA) {
+    public void updateStudent(int studentId, String newName, int newAge, String newGender, String newDepartment, double newGPA) {
         ArrayList<Student> students = getRecords();
         for (int i = 0; i < students.size(); i++) {
             Student s = students.get(i);
@@ -107,26 +107,24 @@ public class StudentDatabase extends Database<Student> {
                 s.setGPA(newGPA);
                 saveToFile();
                 System.out.println("Student with ID " + studentId + " updated successfully.");
-                return true;
             }
         }
         System.out.println("Student with ID " + studentId + " not found.");
-        return false;
+        System.out.println(" Failed to Update!!.");
+
     }
 
     public Student searchStudent(int id) {
-        for (int i = 0; i < getRecords().size(); i++) {
-            Student s = getRecords().get(i);
-            if (s.getId() == id) {
-                System.out.println("Student found with ID: " + id);
-                return s;
-            }
+        Student s = getRecord(id);
+        if (s != null) {
+            System.out.println("Student found with ID: " + id);
+        } else {
+            System.out.println("No student found with ID: " + id);
         }
-        System.out.println("No student found with ID: " + id);
-        return null;
+        return s;
     }
 
-    public Student searchStudentByName(String name) {
+    public Student searchStudent(String name) {
         for (int i = 0; i < getRecords().size(); i++) {
             Student s = getRecords().get(i);
             if (s.getFullName().equalsIgnoreCase(name)) {
