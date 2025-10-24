@@ -127,6 +127,8 @@ public class LoginScreen extends javax.swing.JDialog {
                 }
                 else {
                     JOptionPane.showMessageDialog(this, "Welcome, " + username +"!");
+                    HomePanel home = new HomePanel();
+                    setVisible(false);
                 }
     }//GEN-LAST:event_submitButtonActionPerformed
 
