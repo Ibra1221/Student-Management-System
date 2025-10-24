@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
 
-package com.mycompany.student_management_system;
+package backend;
 /**
  *
  * @author Ibrahim
@@ -21,14 +21,12 @@ public class ManagerRole {
         Student student = new Student(studentID, fullName, age, gender,department ,GPA);
         System.out.println("Adding Student to the database...");
         database.insertRecord(student);
-        database.saveToFile();
         
     }
     
     public void deleteStudent(int key){
         System.out.println("Removing Student from the database...");
         database.deleteRecord(key);
-        database.saveToFile();
     }
     
     public Student[] getListOfStudents(){
@@ -45,8 +43,7 @@ public class ManagerRole {
     }
     public void updateStudent(int studentID, String fullName, int age, String gender,String department, double GPA){
         System.out.println("Updating Student data..."); 
-        database.updateStudent(studentID, fullName, age, gender, department, GPA);
-         database.saveToFile();            
+        database.updateStudent(studentID, fullName, age, gender, department, GPA);            
     }
     public Student searchStudentByID(int key){
         System.out.println("Searching for Student by ID...");
@@ -54,13 +51,22 @@ public class ManagerRole {
     }
     public Student searchStudentByName(String name){
         System.out.println("Searching for Student by name...");
-        return database.searchStudentByName(name);
+        return database.searchStudent(name);
     }
 
     public void sortByGPA(){
         System.out.println("Sorting Students by GPA...");
         database.sortByGPA();
-        database.saveToFile();
+    }
+    
+    public void sortByName(){
+        System.out.println("Sorting Students by GPA...");
+        database.sortByName();
+    }
+    
+    public void sortByID(){
+        System.out.println("Sorting Students by GPA...");
+        database.sortByID();
     }
 }
 
