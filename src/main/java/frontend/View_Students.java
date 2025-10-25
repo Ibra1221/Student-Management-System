@@ -132,6 +132,9 @@ public class View_Students extends javax.swing.JFrame {
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
         studentsTable.getColumnModel().getColumn(5).setCellRenderer(centerRenderer);
+
+        //disable edit
+        studentsTable.setDefaultEditor(Object.class, null);
         
         
     }//GEN-LAST:event_refreshbtnActionPerformed
