@@ -21,6 +21,7 @@ ManagerRole mr;
     
     public Delete() {
         initComponents();
+        loadStudentsToTable();
         mr= new ManagerRole();
         model=(DefaultTableModel)studentTable.getModel();
     }
