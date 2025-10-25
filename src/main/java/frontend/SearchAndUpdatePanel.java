@@ -49,7 +49,7 @@ private void displayAll(){
    row[2]= current.getAge();
    row[3]= current.getGender();
    row[4]= current.getDepartment();
-   row[5]= current.getGPA();
+   row[5]= String.format("%.2f", current.getGPA());
    model.addRow(row);}
 }
 private void fillFormFromTable(int row) {
@@ -69,6 +69,11 @@ private void fillFormFromTable(int row) {
         genderBox.setSelectedIndex(0);
         departmentBox.setSelectedIndex(0);
     }
+    
+    
+   
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -177,6 +182,12 @@ private void fillFormFromTable(int row) {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("ID:");
 
+        txtId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdActionPerformed(evt);
+            }
+        });
+
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Name: ");
 
@@ -203,7 +214,7 @@ private void fillFormFromTable(int row) {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setText("Department");
 
-        departmentBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CS", "CE", "EE", "ME", "Other" }));
+        departmentBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Computer and Communications", "Mechatronics", "Electromechanics", "Biomedical" }));
         departmentBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 departmentBoxActionPerformed(evt);
@@ -299,12 +310,12 @@ private void fillFormFromTable(int row) {
                     .addComponent(btnSearchId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 618, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(277, 277, 277)
                         .addComponent(btnShowAll)
-                        .addGap(0, 292, Short.MAX_VALUE)))
+                        .addGap(0, 286, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -439,29 +450,86 @@ private void fillFormFromTable(int row) {
     }                                           
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {                                          
-        if(txtId.getText().isEmpty()){
-            JOptionPane.showMessageDialog(this,"Select a student first from the table.","Warning",JOptionPane.WARNING_MESSAGE);
+    String idText = txtId.getText().trim();
+    String name = txtName.getText().trim();
+    String ageText = txtAge.getText().trim();
+    String gpaText = txtGPA.getText().trim();
+    String gender = genderBox.getSelectedItem().toString();
+    String department = departmentBox.getSelectedItem().toString();
+
+    // Check for empty or invalid selections
+    if (idText.isEmpty() || name.isEmpty() || ageText.isEmpty() || gpaText.isEmpty() ||
+        gender.equals("Select Gender") || department.equals("Select department")) {
+        JOptionPane.showMessageDialog(this, "Please fill all fields correctly!", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    int age;
+    double gpa;
+    int id;
+    try {
+        id = Integer.parseInt(idText);
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "ID must be an integer", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+    try {
+        age = Integer.parseInt(ageText);
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Age must be an integer", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+    try {
+        gpa = Double.parseDouble(gpaText);
+        if (gpa < 0 || gpa > 4.0) {
+            JOptionPane.showMessageDialog(this, "GPA must be between 0 and 4.0!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
         }
-        try{
-            int id= Integer.parseInt(txtId.getText().trim());
-            String name= txtName.getText().trim();
-            int age = Integer.parseInt(txtAge.getText().trim());
-            String gender= genderBox.getSelectedItem().toString();
-            String department = departmentBox.getSelectedItem().toString();
-            double gpa= Double.parseDouble(txtGPA.getText().trim());
-            mr.updateStudent(id, name, age, gender, department, gpa);
-            JOptionPane.showMessageDialog(this, "Student updated successfully!");
-            displayAll();
-            clearForm();
+    } catch (NumberFormatException e) {
+        gpaText = gpaText.trim().toUpperCase();
+        switch (gpaText) {
+            case "A+": gpa = 4.0; break;
+            case "A":  gpa = 4.0; break;
+            case "A-": gpa = 3.7; break;
+            case "B+": gpa = 3.3; break;
+            case "B":  gpa = 3.0; break;
+            case "B-": gpa = 2.7; break;
+            case "C+": gpa = 2.3; break;
+            case "C":  gpa = 2.0; break;
+            case "C-": gpa = 1.7; break;
+            case "D+": gpa = 1.3; break;
+            case "D":  gpa = 1.0; break;
+            case "F":  gpa = 0.0; break;
+            default:
+                JOptionPane.showMessageDialog(this, "Invalid GPA or Grade (e.g., use A, B+, 3.5, etc.)", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
         }
-        catch(NumberFormatException ex){
-            JOptionPane.showMessageDialog(this, "Please check age and GPA value.","Error",JOptionPane.ERROR_MESSAGE);
-        }
+    }
+    if (age <= 0) {
+        JOptionPane.showMessageDialog(this, "Age must be positive!", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+    if (gpa < 0 || gpa > 4.0) {
+        JOptionPane.showMessageDialog(this, "GPA must be between 0 and 4.0!", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+    mr.updateStudent(id, name, age, gender, department, gpa);
+    JOptionPane.showMessageDialog(this, "Student updated successfully!");
+    displayAll();
+    clearForm();
+
+
+        
+       
     }                                         
 
     private void btnShowAllActionPerformed(java.awt.event.ActionEvent evt) {                                           
         displayAll();
     }                                          
+
+    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {                                      
+        
+    }                                     
 
 
     // Variables declaration - do not modify                     
@@ -514,4 +582,5 @@ public static void main(String args[]) {
    
 }
 }
+
 
