@@ -52,13 +52,22 @@ public class Student implements Info {
         this.id = id;
     }
 
-    public void setFullName(String fullName) {
+   public void setFullName(String fullName) {
+    try {
         if (fullName == null || fullName.trim().isEmpty()) {
-            System.out.println("name cannot be empty.");
+            System.out.println("Name cannot be empty.");
             return;
         }
+
+        Double.parseDouble(fullName.trim());  // this will throw  NumberFormatException if not a number
+
+        System.out.println("Name cannot be a number.");
+    } 
+    catch (NumberFormatException e) {
+
         this.fullName = fullName.trim();
     }
+}
 
     public void setAge(int age) {
         if (age < 6 || age > 100) {

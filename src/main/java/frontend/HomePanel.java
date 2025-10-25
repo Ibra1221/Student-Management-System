@@ -33,12 +33,11 @@ public class HomePanel extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         Home = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        textArea1 = new javax.swing.JTextArea();
         addButton = new javax.swing.JButton();
         viewButton = new javax.swing.JButton();
         searchAndUpdateButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         jLabel2.setText("jLabel1");
 
@@ -49,12 +48,6 @@ public class HomePanel extends javax.swing.JFrame {
         Home.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Home.setText("Home");
         Home.setMaximumSize(new java.awt.Dimension(100, 32));
-
-        textArea1.setColumns(20);
-        textArea1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        textArea1.setRows(5);
-        textArea1.setText("\n\n                 Welcome Home!");
-        jScrollPane1.setViewportView(textArea1);
 
         addButton.setText("Add Student");
         addButton.addActionListener(new java.awt.event.ActionListener() {
@@ -84,47 +77,55 @@ public class HomePanel extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Welcome Home!");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(addButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(92, 92, 92)
-                .addComponent(viewButton)
-                .addGap(138, 138, 138)
-                .addComponent(searchAndUpdateButton)
-                .addGap(130, 130, 130)
-                .addComponent(deleteButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(135, 135, 135)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(addButton)
+                        .addGap(127, 127, 127)
+                        .addComponent(viewButton)
+                        .addGap(137, 137, 137)
+                        .addComponent(searchAndUpdateButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
+                        .addComponent(deleteButton)))
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(67, 67, 67))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(Home, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(374, 374, 374))))
+                        .addGap(374, 374, 374))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(156, 156, 156))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(Home, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(89, 89, 89)
+                .addComponent(jLabel3)
+                .addGap(108, 108, 108)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addButton)
                     .addComponent(viewButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(searchAndUpdateButton)
-                        .addComponent(deleteButton)
-                        .addComponent(addButton)))
-                .addContainerGap())
+                    .addComponent(searchAndUpdateButton)
+                    .addComponent(deleteButton))
+                .addGap(63, 63, 63)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         Home.getAccessibleContext().setAccessibleParent(Home);
@@ -136,7 +137,7 @@ public class HomePanel extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 56, Short.MAX_VALUE))
+                .addGap(0, 38, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,19 +150,35 @@ public class HomePanel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-        // TODO add your handling code here:
+        javax.swing.JFrame frame = new javax.swing.JFrame("Add");
+    frame.setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
+    frame.add(new AddStudents());
+    frame.pack();
+    frame.setVisible(true);
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void viewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewButtonActionPerformed
-        // TODO add your handling code here:
+         javax.swing.JFrame frame = new javax.swing.JFrame("View");
+    frame.setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
+    frame.add(new ViewStudents1());
+    frame.pack();
+    frame.setVisible(true);
     }//GEN-LAST:event_viewButtonActionPerformed
 
     private void searchAndUpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchAndUpdateButtonActionPerformed
-        // TODO add your handling code here:
+         javax.swing.JFrame frame = new javax.swing.JFrame("Search/Update");
+    frame.setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
+    frame.add(new SearchAndUpdatePanel());
+    frame.pack();
+    frame.setVisible(true);
     }//GEN-LAST:event_searchAndUpdateButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
-        // TODO add your handling code here:
+         javax.swing.JFrame frame = new javax.swing.JFrame("Delete");
+    frame.setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
+    frame.add(new Delete());
+    frame.pack();
+    frame.setVisible(true);
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     /**
@@ -206,10 +223,9 @@ public class HomePanel extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton searchAndUpdateButton;
-    private javax.swing.JTextArea textArea1;
     private javax.swing.JButton viewButton;
     // End of variables declaration//GEN-END:variables
 }

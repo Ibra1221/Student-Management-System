@@ -1,0 +1,243 @@
+package frontend;
+
+import backend.ManagerRole;
+import javax.swing.JOptionPane;
+
+/**
+ *
+ * @author Ahmed Walaa
+ */
+public class AddStudents extends javax.swing.JPanel {
+
+    /**
+     * Creates new form Add_Students
+     */
+    public AddStudents() {
+        initComponents();
+    }
+
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    private void initComponents() {
+
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        txtId = new javax.swing.JTextField();
+        txtName = new javax.swing.JTextField();
+        txtAge = new javax.swing.JTextField();
+        txtGPA = new javax.swing.JTextField();
+        comboGender = new javax.swing.JComboBox<>();
+        comboDep = new javax.swing.JComboBox<>();
+        clearbtn = new javax.swing.JButton();
+        savebtn = new javax.swing.JButton();
+        addStudentlabel = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setText("Name:");
+
+        jLabel2.setText("ID:");
+
+        jLabel3.setText("Age:");
+
+        jLabel4.setText("Gender:");
+
+        jLabel5.setText("Department:");
+
+        jLabel6.setText("GPA or Grade:");
+
+        comboGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Gender", "Male", "Female" }));
+
+        comboDep.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select department", "Computer and Communications", "Mechatronics", "Electromechanics", "Biomedical" }));
+
+        clearbtn.setBackground(new java.awt.Color(255, 51, 51));
+        clearbtn.setText("Clear");
+        clearbtn.addActionListener(evt -> clearbtnActionPerformed(evt));
+
+        savebtn.setBackground(new java.awt.Color(0, 255, 51));
+        savebtn.setText("Save");
+        savebtn.addActionListener(evt -> savebtnActionPerformed(evt));
+
+        addStudentlabel.setBackground(new java.awt.Color(0, 51, 255));
+        addStudentlabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        addStudentlabel.setForeground(new java.awt.Color(255, 255, 255));
+        addStudentlabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        addStudentlabel.setText("Add Student");
+        addStudentlabel.setOpaque(true);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(addStudentlabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(clearbtn)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtGPA, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(comboGender, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(comboDep, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                                .addComponent(savebtn)
+                                .addGap(51, 51, 51))))))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(addStudentlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(comboGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(comboDep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(txtGPA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(savebtn)
+                    .addComponent(clearbtn))
+                .addGap(0, 20, Short.MAX_VALUE))
+        );
+    }// </editor-fold>                        
+
+    private void savebtnActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        String idText = txtId.getText().trim();
+        String name = txtName.getText().trim();
+        String ageText = txtAge.getText().trim();
+        String gpaText = txtGPA.getText().trim();
+        String gender = (String) comboGender.getSelectedItem();
+        String dept = (String) comboDep.getSelectedItem();
+
+        if (idText.isEmpty() || name.isEmpty() || ageText.isEmpty() || gpaText.isEmpty() ||
+            gender.equals("Select Gender") || dept.equals("Select department")) {
+            JOptionPane.showMessageDialog(this, "Please fill all fields correctly!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        int age;
+        double gpa;
+        int id;
+
+        try {
+            age = Integer.parseInt(ageText);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Age must be an integer", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        try {
+            gpa = Double.parseDouble(gpaText);
+            if (gpa < 0 || gpa > 4.0) {
+                JOptionPane.showMessageDialog(this, "GPA must be between 0 and 4.0!", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        } catch (NumberFormatException e) {
+            gpaText = gpaText.trim().toUpperCase();
+            switch (gpaText) {
+                case "A+": case "A": gpa = 4.0; break;
+                case "A-": gpa = 3.7; break;
+                case "B+": gpa = 3.3; break;
+                case "B": gpa = 3.0; break;
+                case "B-": gpa = 2.7; break;
+                case "C+": gpa = 2.3; break;
+                case "C": gpa = 2.0; break;
+                case "D+": gpa = 1.7; break;
+                case "D": gpa = 1.3; break;
+                case "D-": gpa = 1.0; break;
+                case "F": gpa = 0.0; break;
+                default:
+                    JOptionPane.showMessageDialog(this, "Invalid GPA or Grade (e.g., use A, B+, 3.5, etc.)", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+            }
+        }
+
+        try {
+            id = Integer.parseInt(idText);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "ID must be an integer", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if (age <= 0) {
+            JOptionPane.showMessageDialog(this, "Age must be positive", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        ManagerRole manager = new ManagerRole();
+        manager.addStudent(id, name, age, gender, dept, gpa);
+
+        JOptionPane.showMessageDialog(this, "Student Added Successfully!");
+
+        clearFields();
+    }                                        
+
+    private void clearbtnActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        clearFields();
+    }                                        
+
+    private void clearFields() {
+        txtName.setText("");
+        txtId.setText("");
+        txtAge.setText("");
+        txtGPA.setText("");
+        comboDep.setSelectedIndex(0);
+        comboGender.setSelectedIndex(0);
+    }
+
+    // Variables declaration - do not modify                     
+    private javax.swing.JLabel addStudentlabel;
+    private javax.swing.JButton clearbtn;
+    private javax.swing.JComboBox<String> comboDep;
+    private javax.swing.JComboBox<String> comboGender;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JButton savebtn;
+    private javax.swing.JTextField txtAge;
+    private javax.swing.JTextField txtGPA;
+    private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtName;
+    // End of variables declaration                   
+}
