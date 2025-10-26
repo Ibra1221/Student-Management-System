@@ -52,9 +52,9 @@ public class ManagerRole {
         System.out.println("Logging out. Saving...");
         database.saveToFile();
     }
-    public void updateStudent(int studentID, String fullName, int age, String gender,String department, double GPA){
+    public boolean updateStudent(int studentID, int newId, String fullName, int age, String gender,String department, double GPA){
         System.out.println("Updating Student data..."); 
-        database.updateStudent(studentID, fullName, age, gender, department, GPA);            
+        return database.updateStudent(studentID, newId,fullName, age, gender, department, GPA);            
     }
     public Student searchStudent(int id){
         System.out.println("Searching for Student by ID...");
@@ -87,6 +87,8 @@ public class ManagerRole {
     public String[] getUsernames(){
         return this.admins;
     }
-}
+    public int generateNewStudentID() {
+    return database.generateNewID();
+    }}
 
 

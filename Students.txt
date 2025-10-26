@@ -1,2 +1,5 @@
-9574,Mohamed,9,Female,CS,1.0
-28327893,as,7,Male,CE,1.8000000715255737
+9577,Ahmed,14,Male,Computer and Communications,3.0
+222,Ahmed,18,Male,Mechatronics,3.200000047683716
+9580,Omar Fathy,19,Male,Mechatronics,3.200000047683716
+9579,Omar Fathy12,20,Male,Mechatronics,3.200000047683716
+9578,Walaa,16,Male,Computer and Communications,3.700000047683716

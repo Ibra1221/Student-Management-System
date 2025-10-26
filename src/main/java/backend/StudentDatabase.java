@@ -11,7 +11,6 @@ import java.util.ArrayList;
  * @author pola-nasser13
  */
 public class StudentDatabase extends Database<Student> {
-
     public StudentDatabase(String filename) {
         super(filename);
     }
@@ -50,7 +49,7 @@ public class StudentDatabase extends Database<Student> {
         }
     }
 
-    private int generateNewID() {
+    public int generateNewID() {
         ArrayList<Student> all = returnAllRecords();
         int maxId = 0;
         for (int i = 0; i < all.size(); i++) {
@@ -97,24 +96,44 @@ public class StudentDatabase extends Database<Student> {
         System.out.println("Students sorted by name successfully.");
     }
 
-    public void updateStudent(int studentId, String newName, int newAge, String newGender, String newDepartment, double newGPA) {
-        ArrayList<Student> students = getRecords();
-        for (int i = 0; i < students.size(); i++) {
-            Student s = students.get(i);
-            if (s.getId() == studentId) {
-                s.setFullName(newName);
-                s.setAge(newAge);
-                s.setGender(newGender);
-                s.setDepartment(newDepartment);
-                s.setGPA(newGPA);
-                saveToFile();
-                System.out.println("Student with ID " + studentId + " updated successfully.");
-            }
-        }
-        System.out.println("Student with ID " + studentId + " not found.");
-        System.out.println(" Failed to Update!!.");
+public boolean updateStudent(int studentId, int newId, String newName, int newAge, String newGender, String newDepartment, double newGPA) {
+    ArrayList<Student> students = getRecords();
+    boolean flag = false;
 
+    for (int i = 0; i < students.size(); i++) {
+        Student s = students.get(i);
+
+        if (s.getId() == studentId) {
+            if (studentId != newId) {
+                for (int j = 0; j < students.size(); j++) {
+                    if (students.get(j).getId() == newId) {
+                        System.out.println("Update failed:  student with new ID " + newId + " already exists");
+                        return false;
+                    }
+                }
+            }
+
+            s.setId(newId);
+            s.setFullName(newName);
+            s.setAge(newAge);
+            s.setGender(newGender);
+            s.setDepartment(newDepartment);
+            s.setGPA(newGPA);
+
+            saveToFile(); 
+            System.out.println("Student with ID " + studentId + " updated successfully to new ID " + newId + ".");
+            flag = true;
+            break;
+        }
     }
+
+    if (!flag) {
+        System.out.println("Student with ID " + studentId + " not found. Update failed");
+    }
+
+    return flag;
+}
+
 
     public Student searchStudent(int id) {
         Student s = getRecord(id);

@@ -20,6 +20,7 @@ public abstract class Database<D extends Info> {
     private ArrayList<D> records;
     private String filename;
 
+
     public Database(String filename) {
         this.filename = filename;
         this.records = new ArrayList<D>();
